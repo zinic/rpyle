@@ -1,6 +1,5 @@
-# Chuckbox
-### Sane Python Project Tools
+# rpyle
+### The Python Random Pile
 
-Chuckbox is a collection of useful boostraping tools for new Python projects.
-In addition, any projects following the chuckbox convention may be packaged
-easily via the chuckbox tool.
+Rpyle is a entropy gathering daemon able to access a multitude of entropy sources. Rpyle
+then makes this entropy available via a webservice.
