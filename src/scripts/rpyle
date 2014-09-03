@@ -1,0 +1,7 @@
+#!/bin.env python
+
+import rpyle.main as main
+
+
+# Hook into the chuckbox main
+main.init()
