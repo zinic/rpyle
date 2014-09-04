@@ -150,7 +150,7 @@ window.roller = {
         var running_total = 0;
         var result_html = '<table><tbody>';
 
-        for (var s = 0; s < roll_object.sides; s++) {
+        for (var s = 0; s < roll_object.prefix; s++) {
             // We add 1 since there's no 0 on a die
             var result = Math.floor(rng() * roll_object.sides) + 1;
 
