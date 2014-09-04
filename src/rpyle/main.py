@@ -38,10 +38,19 @@ def init():
     hasher = hashlib.new('sha1')
 
     rdata_pool = list()
-    rdata_sources = [
+    rdata_sources = [rpyle.system_provider.ProcessProvider([
+            'arecord',
+            '-f',
+            'dat',
+            '-B',
+            '1024'
+        ]),
         rpyle.system_provider.MemoryStatisticsProvider(),
         rpyle.system_provider.CPUStatisticsProvider()
     ]
+
+    for source in rdata_sources:
+        source.start()
 
     timeout = 0
     default_response = tuple()
@@ -50,11 +59,18 @@ def init():
     while True:
         entropy_amount = len(rdata_pool)
         if entropy_amount < 262144:
-            timeout = 0
+            had_ready_sources = False
             for source in rdata_sources:
                 if source.ready():
+                    had_ready_sources = True
+
                     rdata = source.read(64)
                     rdata_pool.extend(rdata)
+
+            if had_ready_sources:
+                timeout = 0
+            else:
+                timeout = 0.1
         else:
             timeout = 1
 

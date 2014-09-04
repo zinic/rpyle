@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <script type="text/javascript" src="roller/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="roller/seedrandom.min.js"></script>
+        <script type="text/javascript" src="roller/roller.js"></script>
+
+        <style type="text/css">
+            #dice_roller_pane {
+                position: absolute;
+
+                top: 50px;
+                left: 25px;
+            }
+
+			#rng_seed_pane {
+                position: absolute;
+
+				max-width: 400px;
+
+				left: 400px;
+			}
+
+			#rng_seed_text {
+				font-size: small;
+				font-weight: bold;
+
+				word-wrap: break-word;
+			}
+
+			#result_pane {
+				position: absolute;
+
+				top: 100px;
+				left: 25px;
+			}
+
+			.hidden {
+				visibility: hidden;
+			}
+
+            .input_name {
+                padding-right: 15px;
+            }
+
+            .float_left {
+                float: left;
+            }
+
+            .float_clear {
+                float: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="root_pane">
+            <span id="dice_roller_header">Dice Roller</span>
+
+            <div id="dice_roller_pane">
+                <div class="input_name float_left">
+                    Roll Desired:
+                </div>
+
+                <div id="roll_input_pane" class="float_clear">
+                    <input id="roll_text_input" type="text" maxlength="64" onkeydown="roller.onkeydown(event)" />
+                	<button type="submit" value="" onclick="roller.roll()">Roll it!</button>
+                </div>
+            </div>
+
+			<div id="rng_seed_pane">
+				Random Seed
+				<p id="rng_seed_text"></p>
+			</div>
+
+			<div id="result_pane" class="hidden">
+				<p id="result_text">This is a result!</p>
+			</div>
+        </div>
+    </body>
+</html>
