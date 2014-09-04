@@ -15,3 +15,9 @@ chmod +x src/scripts/rpyle
 
 PYTHONPATH=src src/scripts/rpyle
 ```
+
+### Getting to the Browser Interface
+
+Once the daemon is running, simply open your browser to
+http://localhost:8080/roller. You can access the random data REST resource at
+http://localhost:8080/rand.
