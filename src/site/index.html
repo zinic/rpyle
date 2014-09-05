@@ -15,7 +15,7 @@
 			#rng_seed_pane {
                 position: absolute;
 
-				max-width: 400px;
+				max-width: 800px;
 
 				left: 400px;
 			}
@@ -30,8 +30,35 @@
 			#result_pane {
 				position: absolute;
 
-				top: 100px;
+				top: 125px;
 				left: 25px;
+
+				max-height: 400px;
+			}
+
+			#result_text table {
+				float: left;
+
+				margin-left: 20px;
+			}
+
+			#result_total_pane {
+				position: absolute;
+
+				font-size: large;
+
+				top: 625px;
+				left: 75px;
+			}
+
+			.name {
+				font-weight: bold;
+
+				padding-right: 20px;
+			}
+
+			.value {
+				padding-right: 20px;
 			}
 
 			.hidden {
@@ -73,7 +100,11 @@
 			</div>
 
 			<div id="result_pane" class="hidden">
-				<p id="result_text">This is a result!</p>
+				<div id="result_text"></div>
+			</div>
+
+			<div id="result_total_pane" class="hidden">
+				<span class="name">Roll Total: </span><span id="result_total_text"></span>
 			</div>
         </div>
     </body>

@@ -149,6 +149,7 @@ window.roller = {
 
         var running_total = 0;
         var result_html = '<table><tbody>';
+        var rows = 0;
 
         for (var s = 0; s < roll_object.prefix; s++) {
             // We add 1 since there's no 0 on a die
@@ -178,10 +179,16 @@ window.roller = {
             }
 
             running_total += result;
-            result_html += '<tr><td>Roll #' + s + '</td><td>' + result + '</td></tr>';
+
+            if (rows == 20) {
+                rows = 0;
+                result_html += '</tbody></table><table><tbody>';
+            }
+
+            rows += 1;
+            result_html += '<tr><td class="name">Roll #' + (s + 1) + '</td><td class="value">' + result + '</td></tr>';
         }
 
-        result_html += '<tr><td>Total</td><td>' + running_total + '</td></tr>';
         result_html += '</tbody></table>';
 
         var result_pane = $('#result_pane');
@@ -190,7 +197,14 @@ window.roller = {
             result_pane.removeClass('hidden')
         }
 
+        var result_total_pane = $('#result_total_pane');
+
+        if (result_total_pane.hasClass('hidden')) {
+            result_total_pane.removeClass('hidden')
+        }
+
         $('#rng_seed_text').html(rng_seed);
         $('#result_text').html(result_html);
+        $('#result_total_text').html('Total: ' + running_total);
     }
 }
